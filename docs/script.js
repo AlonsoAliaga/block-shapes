@@ -156,13 +156,21 @@ function checkSite(window) {
         let toolsData = parsed;
         let toolsArray = []
         //console.log(`Loading ${Object.keys(toolsData).length} tools..`);
+        
         for(let toolData of toolsData) {
           //console.log(toolData);
           let clazz = typeof toolData.clazz == "undefined" ? "" : ` class="${toolData.clazz}"`;
           let style = typeof toolData.style == "undefined" ? "" : ` style="${toolData.style}"`;
-          toolsArray.push(`<span>💠</span> <span${clazz}${style}><a href="${toolData.link}">${toolData.name}</a></span><br>`);
+          toolsArray.push(`<span>💠</span> <span${clazz}${style}><a id="tool-priority-${toolData.priority}" href="${toolData.link}"></a></span><br>`);
         }
-        document.getElementById("tools-for-you").textContent = toolsArray.join(`
+        document.getElementById("tools-for-you").innerHTML = toolsArray.join(`
 `);
+
+        for(let toolData of toolsData) {
+          let toolElement = document.getElementById(`tool-priority-${toolData.priority}`)
+          if(toolElement){
+            toolElement.innerText = toolData.name;
+          }
+        }
       });
 }
