@@ -883,3 +883,34 @@ input:checked + .slider-switch .text-right {
     background: #3b82f6; /* blue-500 */
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+
+#maintenance-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 1);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+#maintenance-overlay .overlay-content {
+  color: #ffffff;
+  max-width: 600px;
+  width: 100%;
+}
+
+#maintenance-overlay h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#maintenance-overlay p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
