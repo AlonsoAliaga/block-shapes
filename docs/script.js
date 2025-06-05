@@ -148,29 +148,46 @@ function checkSite(window) {
       try{document.title = `Page stolen from https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}`;}catch(e){}
       window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/block-shapes/`}
   });
-  fetch('https://api.github.com/repos/AlonsoAliaga/AlonsoAliagaAPI/contents/api/tools/tools-list.json?ref=main')
-      .then(res => res.json())
-      .then(content => {
-        const decoded = atob(content.content);
-        const parsed = JSON.parse(decoded);
-        let toolsData = parsed;
+  loadTools();
+  function loadTools() {
+    /*
+    fetch('https://api.github.com/repos/AlonsoAliaga/AlonsoAliagaAPI/contents/api/tools/tools-list.json?ref=main')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json(); // Parse the JSON response from GitHub API
+    }).then(data => {
+        const base64Content = data.content;
+        const binaryString = atob(base64Content);
+        const bytes = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        const decodedString = new TextDecoder('utf-8').decode(bytes);
+        const toolsData = JSON.parse(decodedString);
         let toolsArray = []
-        //console.log(`Loading ${Object.keys(toolsData).length} tools..`);
-        
         for(let toolData of toolsData) {
-          //console.log(toolData);
-          let clazz = typeof toolData.clazz == "undefined" ? "" : ` class="${toolData.clazz}"`;
-          let style = typeof toolData.style == "undefined" ? "" : ` style="${toolData.style}"`;
-          toolsArray.push(`<span>💠</span> <span${clazz}${style}><a id="tool-priority-${toolData.priority}" href="${toolData.link}"></a></span><br>`);
+            let clazz = typeof toolData.clazz == "undefined" ? "" : ` class="${toolData.clazz}"`;
+            let style = typeof toolData.style == "undefined" ? "" : ` style="${toolData.style}"`;
+            toolsArray.push(`<span>💠</span> <span${clazz}${style}><a id="tool-priority-${toolData.priority}" href="${toolData.link}">${toolData.name}</a></span>`);
         }
-        document.getElementById("tools-for-you").innerHTML = toolsArray.join(`
-`);
-
-        for(let toolData of toolsData) {
-          let toolElement = document.getElementById(`tool-priority-${toolData.priority}`)
-          if(toolElement){
-            toolElement.textContent = toolData.name;
+        document.getElementById("tools-for-you").innerHTML = toolsArray.join(`<br>`);
+    }).catch(error => {
+        console.error("Error fetching or decoding GitHub API content:", error);
+    });
+    */
+    fetch('https://raw.githubusercontent.com/AlonsoAliaga/AlonsoAliagaAPI/refs/heads/main/api/tools/tools-list.json')
+        .then(res => res.json())
+        .then(content => {
+          let toolsData = content;
+          let toolsArray = []
+          for(let toolData of toolsData) {
+            let clazz = typeof toolData.clazz == "undefined" ? "" : ` class="${toolData.clazz}"`;
+            let style = typeof toolData.style == "undefined" ? "" : ` style="${toolData.style}"`;
+            toolsArray.push(`<span>💠</span> <span${clazz}${style}><a title="${toolData.description}" id="tool-priority-${toolData.priority}" href="${toolData.link}">${toolData.name}</a></span>`);
           }
-        }
-      });
+          document.getElementById("tools-for-you").innerHTML = toolsArray.join(`<br>`);
+        });
+  }
 }
