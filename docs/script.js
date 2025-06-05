@@ -169,7 +169,7 @@ function checkSite(window) {
         for(let toolData of toolsData) {
           let toolElement = document.getElementById(`tool-priority-${toolData.priority}`)
           if(toolElement){
-            toolElement.innerText = toolData.name;
+            toolElement.textContent = toolData.name;
           }
         }
       });
