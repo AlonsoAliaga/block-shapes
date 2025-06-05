@@ -931,7 +931,7 @@
 
 
         // --- Event Listeners for UI Interactions ---
-        window.onload = function () {
+        window.addEventListener("load",function () {
             // Initialize the Three.js scene and components when the window loads
             init();
 
@@ -1107,7 +1107,7 @@
                 zoomFactor = parseFloat(zoomSlider.value); // Update global zoomFactor
                 updateCameraViewMode(zoomFactor); // Recalculate camera view with new zoom
             },50);
-        };
+        });
         window.addEventListener('message', async function(event) {
             // if (event.origin !== 'https://alonsoaliaga.github.io') return;
             //console.log("Mensaje recibido!");
