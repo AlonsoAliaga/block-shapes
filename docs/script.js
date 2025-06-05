@@ -162,7 +162,7 @@ function checkSite(window) {
           let style = typeof toolData.style == "undefined" ? "" : ` style="${toolData.style}"`;
           toolsArray.push(`<span>💠</span> <span${clazz}${style}><a href="${toolData.link}">${toolData.name}</a></span><br>`);
         }
-        document.getElementById("tools-for-you").innerHTML = toolsArray.join(`
+        document.getElementById("tools-for-you").textContent = toolsArray.join(`
 `);
       });
 }
