@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlonsoAliaga/block-shapes/main/assets/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Shape Generator | AlonsoAliaga Development</title>
+    
+    <meta name="theme-color" content="#9a14ff"/>
+    <meta property="og:title" content="Block Shape Generator | AlonsoAliaga Development">
+    <meta property="og:image" content="https://raw.githubusercontent.com/AlonsoAliaga/block-shapes/main/assets/images/logo.png">
+    <meta property="og:description" content="Craft epic Minecraft builds with ease! Generate precise block-by-block guides for domes, spheres, cylinders, and cones. Design perfect shapes now!">
+    <meta property="og:url" content="https://alonsoaliaga.github.io/index.html">
+    <meta property=og:type content=website/>
+    <meta property="og:site_name" content="Block Shapes - AlonsoAliaga Development" />
+
+</head>
+<body>
+    <div class="content" style="">
+      <div class="header">
+        <h1 style="font-family: MinecraftBold;"><a href="https://alonsoaliaga.com/block-shapes" rel="noopener" target="_blank">Block Shape</a> Generator</h1>
+        <h2 style="font-size: 20px; color: rgb(255, 71, 71)">Use Google Chrome or Opera for a better experience. Edge is reported as not compatible!</h2>
+        <div class="options" style="padding: 10px 10px 10px 10px; margin-bottom: 10px;">
+          <h2 class="rainbow" style="font-size:25px; color:transparent">How is this different from other generators?</h2>
+          Well, let's be honest. There aren't too many generators out there. In any case this one has <b class="rainbow">many</b> cool options you might find really interesting.<br><br>
+          <h2 style="font-size: 20px; color: rgb(255, 71, 71)">This tool was made specially for builders! ❤️</h2>
+          <span style="font-size: 17px;">
+            <b>⚠️ If you have cool ideas, suggest them in our <a href="https://alonsoaliaga.com/discord" rel="noopener" target="_blank">official discord server.</a></b><br>
+          </span>
+          <span style="font-size: 12px;">
+            <b><img height="12px" src="https://cdn-icons-png.flaticon.com/512/174/174861.png"> If you found this tool useful, consider <a href="https://alonsoaliaga.com/donate" rel="noopener" target="_blank">making a donation</a> for our hard work. We appreciate it!</b><br>
+            <!-- <b><img height="15px" src="https://raw.githubusercontent.com/AlonsoAliaga/mcpfp/main/assets/images/paypal_logo.png"> If you found this tool useful, consider <a href="https://alonsoaliaga.com/donate" rel="noopener" target="_blank">making a donation</a> for our hard work. We appreciate it!</b><br> -->
+          </span>
+        </div>
+        <span id="snackbar"><b>💎 Successfully Copied! 💎</b><br><span style="font-size: small;">Thanks for using our tool!</span></span>
+        <div id="unlock-secret-features-div" style="display: none;align-items: center;text-align: center;">
+          <div id="unlock-secret-features" style="background-color: #ff0000;color:#ffffff;display: flex;font-family: MinecraftBold;padding: 6px 12px;border-radius: 13px;outline: none;width: 600px;justify-content: center;" class="darkbuttonboxes">🧪 Unlocked secret features! 🧪</div>
+          <br><br><br>
+        </div>
+        <div style="display: inline-flex;align-items: center;">
+          <span style="font-family: MinecraftBold;">Site options:</span>&nbsp;
+          <div id="appearance" style="display: inline-block;font-family: MinecraftBold;padding: 5px 10px 5px 10px;" class="darkbuttonboxes">
+            <input type="checkbox" checked id="darkmode" onclick="toggleDarkmode();"></input>
+            <label for="darkmode" style="margin-bottom: 0px;margin-top: 0px;"> Dark Mode 👁‍🗨</label>
+          </div>&nbsp;<div id="unlock-features-div" style="display: inline-block;font-family: MinecraftBold;padding: 6px 12px;border-radius: 13px;outline: none;" class="darkbuttonboxes">
+            <input style="display: none;" type="checkbox" checked id="unlock-features"></input>
+            <label for="unlock-features" style="margin-bottom: 0px;margin-top: 0px;" onclick="unlockFeatures();">  Unlock features 🧪</label>
+          </div>
+        </div>
+        <div id="model-movement-div" style="display: none;">
+            <p style="font-size: 8px;"> </p>
+            <div class="mb-6" style="margin-bottom: 0px;">
+              <div style="align-items: center;justify-content: center;padding: 5px;" class="darktext darkbuttonboxes flex items-center justify-center">
+                  <input type="checkbox" id="enableModelMovement" class="mr-3 w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                  <label for="enableModelMovement" class="text-gray-700 text-lg font-semibold">Enable Model Movement    &nbsp;</label>
+                  <span style="height: 0px;font-size: 20px;top: 12px;" class="toremoverightemoji shiny-emoji right-emoji">🧪</span>
+              </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size: 8px;"> </p>
+      <div class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+        <div class="options flex flex-col md:flex-row items-stretch w-full max-w-6xl bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden"
+            style="border-radius: 15px;height: 100%; min-height: 600px;padding: 3px;border-color: #777777">
+            <div style="border-radius: 15px;width: 29%;padding: 9px 9px;" class="darkcontrast w-full md:w-1/4 bg-gray-50 p-6 flex flex-col justify-between border-b md:border-b-0 md:border-r border-gray-200 overflow-y-auto">
+                <div>
+                    <h1 class="darktext text-3xl font-extrabold text-gray-900 mb-6 text-center">Shape Controls</h1>
+
+                    <div class="mb-6">
+                        <label class="darktext block text-gray-700 text-lg font-semibold mb-3">Select Shape:</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-2">
+                            <label class="shape-radio-label">
+                                <input type="radio" name="shapeType" value="sphere" checked>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6a.75.75 0 0 0 .75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd" />
+                                    </svg>
+                                    Sphere
+                                </span>
+                            </label>
+                            <label class="shape-radio-label">
+                                <input type="radio" name="shapeType" value="cone">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                                        <path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v16.5a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM12 21a6.75 6.75 0 0 0 6.75-6.75V12a.75.75 0 0 0-1.5 0v2.25a5.25 5.25 0 1 1-10.5 0V12a.75.75 0 0 0-1.5 0v2.25A6.75 6.75 0 0 0 12 21Z" clip-rule="evenodd" />
+                                    </svg>
+                                    Cone
+                                </span>
+                            </label>
+                            <label class="shape-radio-label">
+                                <input type="radio" name="shapeType" value="dome">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm0 17.25a7.5 7.5 0 0 0 7.5-7.5H4.5a7.5 7.5 0 0 0 7.5 7.5Z" clip-rule="evenodd" />
+                                    </svg>
+                                    Dome
+                                </span>
+                            </label>
+                            <label class="shape-radio-label">
+                                <input type="radio" name="shapeType" value="cylinder">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 6a.75.75 0 0 1 .75.75v6a.75.75 0 0 1-1.5 0V6.75A.75.75 0 0 1 12 6Zm3.75 5.25a.75.75 0 0 0-1.5 0v3a.75.75 0 0 0 1.5 0v-3ZM8.25 11.25a.75.75 0 0 0-1.5 0v3a.75.75 0 0 0 1.5 0v-3Z" clip-rule="evenodd" />
+                                    </svg>
+                                    Cylinder
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="darktext block text-gray-700 text-lg font-semibold mb-3">Input Type:</label>
+                        <label class="switch">
+                            <input type="checkbox" id="sizeTypeSwitch" checked> <!-- Default to Diameter -->
+                            <span class="slider-switch">
+                                <span class="text text-left">Radius</span>
+                                <span style="" class="text text-right">Diameter</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="radiusInput" class="darktext block text-gray-700 text-lg font-semibold mb-3" id="radiusLabel">Diameter:</label> <!-- Default label -->
+                        <div class="flex items-center justify-center space-x-2">
+                            <button id="decrementRadius" class="bg-blue-200 hover:bg-blue-300 text-blue-800 font-bold py-1 px-3 rounded-md transition duration-200">-</button>
+                            <input type="number" id="radiusInput" value="10" min="1" max="100"
+                                   class="w-20 text-center border border-gray-300 rounded-md py-1 text-lg font-bold">
+                            <button id="incrementRadius" class="bg-blue-200 hover:bg-blue-300 text-blue-800 font-bold py-1 px-3 rounded-md transition duration-200">+</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="heightInput" class="darktext block text-gray-700 text-lg font-semibold mb-3" id="heightLabel">Height:</label>
+                        <div class="flex items-center justify-center space-x-2">
+                            <button id="decrementHeight" class="bg-blue-200 hover:bg-blue-300 text-blue-800 font-bold py-1 px-3 rounded-md transition duration-200">-</button>
+                            <input type="number" id="heightInput" value="10" min="1" max="100"
+                                   class="w-20 text-center border border-gray-300 rounded-md py-1 text-lg font-bold">
+                            <button id="incrementHeight" class="bg-blue-200 hover:bg-blue-300 text-blue-800 font-bold py-1 px-3 rounded-md transition duration-200">+</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="shapeColor" class="darktext block text-gray-700 text-lg font-semibold mb-3">Shape Color:</label>
+                        <input type="color" id="shapeColor" value="#3b82f6" class="w-full h-10 rounded-md border border-gray-300 cursor-pointer">
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex items-center justify-center">
+                            <input type="checkbox" id="hollow" class="mr-3 w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                            <label for="hollow" class="darktext text-gray-700 text-lg font-semibold">Hollow Shape</label>
+                        </div>
+                        <p class="darktext text-gray-500 text-xs text-center mt-1">
+                            (Toggle to create a hollow shell)
+                        </p>
+                    </div>
+
+                    <!-- Hidden option to enable/disable model movement -->
+
+
+                    <div class="mb-6">
+                        <label for="zoomSlider" class="darktext block text-gray-700 text-lg font-semibold mb-3">Zoom:</label>
+                        <input type="range" id="zoomSlider" min="25" max="250" value="75" class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer">
+                        <p class="darktext text-center text-gray-500 text-xs mt-1">
+                            (Adjust zoom level)
+                        </p>
+                    </div>
+
+                    <div class="mb-6">
+                        <button id="toggleGridButton"
+                                class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg w-full transition duration-300 ease-in-out transform hover:scale-105 shadow-md hover:shadow-lg">
+                            Toggle Grid
+                        </button>
+                        <p class="darktext text-gray-500 text-xs text-center mt-1">
+                            (Enable/Disable Grid Lines)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-auto">
+                    <button id="generateButton"
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-300 ease-in-out transform hover:scale-105 shadow-md hover:shadow-lg">
+                        Generate Shape
+                    </button>
+                    <p id="blockCount" class="darktext text-center text-gray-700 text-md font-semibold mt-4">Blocks required: 0</p>
+                    <p id="message" class="text-center text-red-600 text-sm mt-2 font-medium"></p>
+                </div>
+            </div>
+
+            <div class="flex-1 relative overflow-hidden">
+                <canvas id="shapeCanvas"></canvas>
+                <div id="loadingIndicator" class="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-80 z-10 hidden">
+                    <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-blue-500 mb-4"></div>
+                    <p class="text-blue-700 text-xl font-semibold">Generating...</p>
+                    <p class="text-gray-500 text-sm mt-2">For larger radii, this may take a moment.</p>
+                </div>
+
+                <div class="vertical-slider-container" style="border-radius: 15px;background-color: #ffffff;">
+                    <span id="totalLayersFixedDisplay" style="" class="text-gray-700 text-sm font-semibold mb-2">#0</span>
+                    <input type="range" id="layerVisibility" min="0" max="100" value="100">
+                    <span id="firstLayerFixedDisplay" class="text-gray-700 text-sm font-semibold mt-2">#1</span>
+                    <span id="currentLayerIndicator" style="font-weight: bold;writing-mode: sideways-lr;height: 300px;" class="text-gray-700 text-sm mt-2">Current Layer: --</span>
+                </div>
+
+                <button id="toggleTopViewButton" style="background-color:#3b82f6;right: 5rem;"
+                        class="absolute top-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 z-10">
+                    View Top Layer (2D)
+                </button>
+            </div>
+        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // Global variables for Three.js scene, camera, renderer, and the group holding voxels
+        let scene, camera, renderer;
+        let shapeGroup; // A THREE.Group to hold the InstancedMesh
+        let instancedMesh; // The THREE.InstancedMesh object
+        const dummy = new THREE.Object3D(); // Helper object for setting instance matrices
+
+        let allPossibleVoxels = []; // Array to store all potential voxel positions {x, y, z}
+        let currentShapeType = 'sphere'; // Default shape type
+        let currentViewMode = 'perspective'; // Default view mode
+        let previousViewMode = 'perspective'; // To store view mode before switching to 2D top view
+        let totalLayers = 0; // To store the total number of layers for the slider display
+        let zoomFactor = 1.0; // Initial zoom factor, globally defined
+
+        // Min/Max Y coordinates of the currently generated shape for layer visibility calculation
+        let minShapeY = 0;
+        let maxShapeY = 0;
+
+        // Reusable geometry and material
+        const voxelGeometry = new THREE.BoxGeometry(1, 1, 1);
+        // Fixed highlight color
+        const highlightColor = new THREE.Color(0x00CED1); // Dark Turquoise for highlighted layer
+        const randomColorForCurrentLayer3D = new THREE.Color(0x3b2e94);
+        const randomColorForBackground2D = new THREE.Color(0x656565);
+        let voxelMaterial = new THREE.MeshStandardMaterial({
+            color: new THREE.Color(0xFFFFFF), // Set material color to white when using vertexColors
+            transparent: true,
+            opacity: 1,
+            roughness: 0.5,
+            metalness: 0.1,
+            depthTest: true,
+            depthWrite: true, // Changed back to true for initial testing
+            //vertexColors: true // Crucial: Enable vertex colors to use instanceColor attribute
+        });
+
+        // Define the Web Worker script
+        const voxelWorkerScript = `
+            self.onmessage = function(e) {
+                const { shapeType, inputValue, isDiameterMode, heightValue, hollow } = e.data; // Added hollow
+
+                let allPossibleVoxels = [];
+                let localMinShapeY = Infinity;
+                let localMaxShapeY = -Infinity;
+
+                let effectiveGeometricRadius; // This is the 'R' in sphere equation x^2+y^2+z^2 <= R^2
+                let loopMinX_Z, loopMaxX_Z; // Min/Max integer coordinates for X, Z loops
+                let centerOffsetX_Z = 0; // Offset applied to X, Z voxel coordinates for distance calculation
+
+                if (isDiameterMode) {
+                    // If input is diameter (N blocks across)
+                    effectiveGeometricRadius = inputValue / 2; // e.g., Diameter 6 -> R=3, Diameter 7 -> R=3.5
+
+                    if (inputValue % 2 === 1) { // Odd diameter (e.g., 7 blocks: -3 to 3)
+                        loopMinX_Z = -(inputValue - 1) / 2;
+                        loopMaxX_Z = (inputValue - 1) / 2;
+                        centerOffsetX_Z = 0;
+                    } else { // Even diameter (e.g., 6 blocks: -3 to 2)
+                        loopMinX_Z = -(inputValue / 2); // e.g., for 6, -3
+                        loopMaxX_Z = (inputValue / 2) - 1; // e.g., for 6, 2
+                        centerOffsetX_Z = 0.5; // Shift to center at 0.5 for even spans
+                    }
+                } else {
+                    // If input is radius (R)
+                    // The inputValue here is already the geometric radius from the main thread
+                    effectiveGeometricRadius = inputValue;
+                    // Calculate loopMin/Max based on the equivalent diameter (2R or 2R+1)
+                    let equivalentDiameter = inputValue * 2; // This is the "span" of blocks
+                    if (equivalentDiameter % 2 === 1) { // Odd equivalent diameter (e.g., radius 3 -> diameter 7)
+                        loopMinX_Z = -(equivalentDiameter - 1) / 2;
+                        loopMaxX_Z = (equivalentDiameter - 1) / 2;
+                        centerOffsetX_Z = 0;
+                    } else { // Even equivalent diameter (e.g., radius 3 -> diameter 6)
+                        loopMinX_Z = -(equivalentDiameter / 2); // e.g., for 6, -3
+                        loopMaxX_Z = (equivalentDiameter / 2) - 1; // e.g., for 6, 2
+                        centerOffsetX_Z = 0.5;
+                    }
+                }
+
+                // New: Calculate Y loop bounds based on heightValue
+                let loopMinY, loopMaxY;
+                let centerOffsetY = 0;
+
+                // For all shapes, the Y loop will be strictly controlled by heightValue
+                if (heightValue % 2 === 1) { // Odd height
+                    loopMinY = -(heightValue - 1) / 2;
+                    loopMaxY = (heightValue - 1) / 2;
+                    centerOffsetY = 0;
+                } else { // Even height
+                    loopMinY = -(heightValue / 2);
+                    loopMaxY = (heightValue / 2) - 1;
+                    centerOffsetY = 0.5;
+                }
+
+                // For Cone and Dome, force base to Y=0, so Y loop starts from 0 to heightValue-1
+                if (shapeType === 'cone' || shapeType === 'dome' ||  shapeType === 'cylinder' ) {
+                    loopMinY = 0;
+                    loopMaxY = heightValue - 1;
+                    centerOffsetY = 0; // No offset needed if starting from 0
+                }
+
+                for (let x = loopMinX_Z; x <= loopMaxX_Z; x++) {
+                    for (let y = loopMinY; y <= loopMaxY; y++) { // Use new Y loop bounds
+                        for (let z = loopMinX_Z; z <= loopMaxX_Z; z++) {
+                            let addVoxel = false;
+
+                            let coordX = x + centerOffsetX_Z;
+                            let coordY = y + centerOffsetY; // Use new Y coordinate with offset
+                            let coordZ = z + centerOffsetX_Z;
+
+                            if (shapeType === 'sphere') {
+                                const naturalSphereHeight = effectiveGeometricRadius * 2;
+                                let scaledCoordY = coordY;
+                                if (heightValue > 0 && naturalSphereHeight > 0) {
+                                    scaledCoordY = coordY * (naturalSphereHeight / heightValue);
+                                }
+                                const distanceSquared = coordX * coordX + scaledCoordY * scaledCoordY + coordZ * coordZ;
+                                const currentDistance = Math.sqrt(distanceSquared);
+
+                                if (hollow) { // If hollow, check for shell
+                                    if (currentDistance >= effectiveGeometricRadius - 1.0 && currentDistance <= effectiveGeometricRadius + 0.5) {
+                                        addVoxel = true;
+                                    }
+                                } else { // If not hollow (filled), check for solid
+                                    if (currentDistance <= effectiveGeometricRadius) {
+                                        addVoxel = true;
+                                    }
+                                }
+                            } else if (shapeType === 'cone') {
+                                const normalizedY = coordY / heightValue; 
+                                const currentMaxRadius = effectiveGeometricRadius * (1 - normalizedY);
+                                const distanceXZSquared = coordX * coordX + coordZ * coordZ;
+                                const currentXZRadius = Math.sqrt(distanceXZSquared);
+
+                                if (hollow) { // If hollow, check for shell
+                                    if (currentXZRadius >= currentMaxRadius - 1.0 && currentXZRadius <= currentMaxRadius + 0.5 && coordY >= 0 && coordY < heightValue) {
+                                        addVoxel = true;
+                                    }
+                                } else { // If not hollow (filled), check for solid
+                                    if (currentXZRadius <= currentMaxRadius && coordY >= 0 && coordY < heightValue) {
+                                        addVoxel = true;
+                                    }
+                                }
+                            } else if (shapeType === 'dome') {
+                                const naturalDomeHeight = effectiveGeometricRadius;
+                                let scaledCoordY = coordY;
+                                if (heightValue > 0 && naturalDomeHeight > 0) {
+                                    scaledCoordY = coordY * (naturalDomeHeight / heightValue);
+                                }
+                                const distanceSquared = coordX * coordX + scaledCoordY * scaledCoordY + coordZ * coordZ;
+                                const currentDistance = Math.sqrt(distanceSquared);
+
+                                if (coordY >= 0) { // Only consider upper hemisphere
+                                    if (hollow) { // If hollow, check for shell
+                                        if (currentDistance >= effectiveGeometricRadius - 1.0 && currentDistance <= effectiveGeometricRadius + 0.5) {
+                                            addVoxel = true;
+                                        }
+                                    } else { // If not hollow (filled), check for solid
+                                        if (currentDistance <= effectiveGeometricRadius) {
+                                            addVoxel = true;
+                                        }
+                                    }
+                                }
+                            } else if (shapeType === 'cylinder') {
+                                const distanceXZSquared = coordX * coordX + coordZ * coordZ;
+                                const currentXZRadius = Math.sqrt(distanceXZSquared);
+
+                                if (hollow) {
+                                    if (currentXZRadius >= effectiveGeometricRadius - 1.0 && currentXZRadius <= effectiveGeometricRadius + 0.5) {
+                                        addVoxel = true;
+                                    }
+                                } else {
+                                    if (currentXZRadius <= effectiveGeometricRadius) {
+                                        addVoxel = true;
+                                    }
+                                }
+                            }
+
+                            if (addVoxel) {
+                                allPossibleVoxels.push({ x: x, y: y, z: z });
+                                if (y < localMinShapeY) localMinShapeY = y;
+                                if (y > localMaxShapeY) localMaxShapeY = y;
+                            }
+                        }
+                    }
+                }
+
+                if (allPossibleVoxels.length === 0) {
+                    localMinShapeY = 0;
+                    localMaxShapeY = 0;
+                }
+
+                self.postMessage({
+                    allPossibleVoxels: allPossibleVoxels,
+                    minShapeY: localMinShapeY,
+                    maxShapeY: localMaxShapeY,
+                    voxelCount: allPossibleVoxels.length
+                });
+            };
+        `;
+
+        // Web Worker instance
+        let worker = new Worker(URL.createObjectURL(new Blob([voxelWorkerScript], { type: 'application/javascript' })));
+
+        worker.onmessage = function(e) {
+            const { allPossibleVoxels: workerVoxels, minShapeY: workerMinY, maxShapeY: workerMaxY, voxelCount } = e.data;
+
+            allPossibleVoxels = workerVoxels;
+            minShapeY = workerMinY;
+            maxShapeY = workerMaxY;
+
+            // Calculate total layers
+            const uniqueYLevels = [...new Set(allPossibleVoxels.map(p => p.y))].sort((a, b) => a - b);
+            totalLayers = uniqueYLevels.length;
+            if (totalLayers === 0 && voxelCount > 0) { // Handle single layer case if it somehow doesn't register unique Y
+                totalLayers = 1;
+            } else if (totalLayers === 0 && voxelCount === 0) {
+                totalLayers = 0;
+            }
+
+            // Update fixed layer displays
+            document.getElementById('totalLayersFixedDisplay').textContent = `#${totalLayers}`;
+            document.getElementById('firstLayerFixedDisplay').textContent = `#1`; // "Layer: 1" at bottom
+
+            // Clear previous instances and voxel data
+            if (instancedMesh) {
+                shapeGroup.remove(instancedMesh);
+                instancedMesh.dispose();
+                instancedMesh = null;
+            }
+
+            // Create the InstancedMesh after allPossibleVoxels are determined
+            if (allPossibleVoxels.length > 0) {
+                instancedMesh = new THREE.InstancedMesh(voxelGeometry, voxelMaterial, allPossibleVoxels.length);
+                instancedMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+                instancedMesh.instanceColor = new THREE.BufferAttribute(new Float32Array(allPossibleVoxels.length * 4), 4);
+                shapeGroup.add(instancedMesh);
+            } else {
+                instancedMesh = null; // Ensure it's null if no voxels
+            }
+
+            // Adjust camera position based on the new shape's bounds
+            const radiusInputVal = parseFloat(document.getElementById('radiusInput').value);
+            const heightInputVal = parseFloat(document.getElementById('heightInput').value); // Get height value
+            const sizeTypeSwitch = document.getElementById('sizeTypeSwitch');
+            const isDiameterMode = sizeTypeSwitch.checked;
+
+            let maxDimensionX_Z = 0;
+            if (isDiameterMode) {
+                maxDimensionX_Z = radiusInputVal / 2;
+            } else {
+                maxDimensionX_Z = radiusInputVal;
+            }
+            
+            // Adjust camera distance based on the largest dimension of the shape (X, Z, or Y/height)
+            let shapeMaxDimension = Math.max(
+                (maxShapeY - minShapeY) / 2, // half height from actual voxels
+                maxDimensionX_Z, // half width/depth from input
+                heightInputVal / 2 // half height from input
+            );
+
+            // Ensure a minimum camera distance so small shapes are visible
+            if (shapeMaxDimension === 0 && allPossibleVoxels.length > 0) {
+                shapeMaxDimension = 1; // For single block case
+            } else if (shapeMaxDimension === 0 && allPossibleVoxels.length === 0) {
+                shapeMaxDimension = 10; // Default for empty scene
+            }
+
+            // camera.position.z = shapeMaxDimension * 2.5; // This line is now handled in updateCameraViewMode
+            camera.lookAt(scene.position); // Always look at the center
+
+            document.getElementById('loadingIndicator').classList.add('hidden');
+            document.getElementById('blockCount').textContent = `Blocks required: ${voxelCount}`;
+            document.getElementById('message').textContent = '';
+
+            if (voxelCount === 0 && parseFloat(document.getElementById('radiusInput').value) > 0) {
+                document.getElementById('message').textContent = 'No voxels generated. Try adjusting the radius or hollow setting.';
+            }
+
+            updateVoxelTransparency();
+            updateCameraViewMode(zoomFactor); // Call this to apply zoom factor
+        };
+
+        /**
+         * Handles window resize events to keep the canvas responsive.
+         */
+        function onWindowResize() {
+            const canvas = document.getElementById('shapeCanvas');
+            const aspectRatio = canvas.clientWidth / canvas.clientHeight;
+
+            if (camera instanceof THREE.PerspectiveCamera) {
+                camera.aspect = aspectRatio;
+            } else if (camera instanceof THREE.OrthographicCamera) {
+                const frustumSize = getFrustumSize(); // Calculate based on current radius
+                camera.left = -frustumSize * aspectRatio / 2;
+                camera.right = frustumSize * aspectRatio / 2;
+                camera.top = frustumSize / 2;
+                camera.bottom = -frustumSize / 2;
+            }
+            camera.updateProjectionMatrix(); // Apply the update
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight); // Resize the renderer
+        }
+
+        /**
+         * Calculates the frustum size for the orthographic camera based on the current dimensions and zoom factor.
+         */
+        function getFrustumSize() {
+            const radiusInputVal = parseFloat(document.getElementById('radiusInput').value);
+            const heightInputVal = parseFloat(document.getElementById('heightInput').value); // Get height value
+            const sizeTypeSwitch = document.getElementById('sizeTypeSwitch');
+            let effectiveSizeForFrustumX_Z;
+
+            if (sizeTypeSwitch.checked) { // Diameter mode: input is total blocks across
+                effectiveSizeForFrustumX_Z = radiusInputVal; // The total number of blocks across
+            } else { // Radius mode: input is geometric radius
+                effectiveSizeForFrustumX_Z = radiusInputVal * 2; // Radius R means 2R blocks across (approx)
+            }
+
+            // Consider both X/Z dimensions and Height for frustum size
+            const maxDimension = Math.max(effectiveSizeForFrustumX_Z, heightInputVal);
+
+            return maxDimension * 1.5 * (100 / zoomFactor); // Apply zoom factor
+        }
+        let isGridEnabled = false;
+        /**
+         * Updates the camera based on the selected view mode (perspective, isometric, or top-down 2D).
+         */
+        function updateCameraViewMode(currentZoomFactor) { // Added currentZoomFactor as an argument
+            const canvas = document.getElementById('shapeCanvas');
+            const aspectRatio = canvas.clientWidth / canvas.clientHeight;
+
+            // Dispose of old camera if it exists and is different type
+            if (camera) {
+                // No explicit dispose method for camera, but re-assigning will garbage collect old one
+            }
+
+            if (currentViewMode === 'perspective') {
+                camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
+                // Adjust Z position based on shape size and zoom for perspective camera
+                const radiusInputVal = parseFloat(document.getElementById('radiusInput').value);
+                const heightInputVal = parseFloat(document.getElementById('heightInput').value);
+                const sizeTypeSwitch = document.getElementById('sizeTypeSwitch');
+                const isDiameterMode = sizeTypeSwitch.checked;
+
+                let maxDimensionX_Z = 0;
+                if (isDiameterMode) {
+                    maxDimensionX_Z = radiusInputVal / 2;
+                } else {
+                    maxDimensionX_Z = radiusInputVal;
+                }
+                let shapeMaxDimension = Math.max(
+                    (maxShapeY - minShapeY) / 2,
+                    maxDimensionX_Z,
+                    heightInputVal / 2
+                );
+                if (shapeMaxDimension === 0 && allPossibleVoxels.length > 0) {
+                    shapeMaxDimension = 1;
+                } else if (shapeMaxDimension === 0 && allPossibleVoxels.length === 0) {
+                    shapeMaxDimension = 10;
+                }
+                camera.position.z = shapeMaxDimension * 2.5 * (100 / currentZoomFactor); // Apply zoom here
+                camera.position.y = shapeMaxDimension * 0.5 * (100 / currentZoomFactor); // Slightly above for better perspective view
+                camera.lookAt(scene.position);
+
+                // Update cursor based on enableModelMovementCheckbox
+                const enableModelMovementCheckbox = document.getElementById('enableModelMovement');
+                if (enableModelMovementCheckbox.checked) {
+                    canvas.style.cursor = 'grab';
+                } else {
+                    canvas.style.cursor = 'default';
+                }
+
+            } else if (currentViewMode === 'isometric') {
+                const frustumSize = getFrustumSize(); // This uses the global zoomFactor
+                camera = new THREE.OrthographicCamera(
+                    -frustumSize * aspectRatio / 2,
+                    frustumSize * aspectRatio / 2,
+                    frustumSize / 2,
+                    -frustumSize / 2,
+                    0.1,
+                    1000
+                );
+                // Fixed position for isometric view
+                const isoAngle = Math.PI / 6; // 30 degrees
+                const isoDistance = frustumSize; // Scaled by frustum size
+                camera.position.set(
+                    isoDistance * Math.cos(isoAngle) * Math.cos(Math.PI / 4),
+                    isoDistance * Math.sin(isoAngle),
+                    isoDistance * Math.cos(isoAngle) * Math.sin(Math.PI / 4)
+                );
+                camera.lookAt(scene.position);
+                canvas.style.cursor = 'default'; // Disable dragging cursor
+            } else if (currentViewMode === 'topdown2d') {
+                const frustumSize = getFrustumSize(); // This uses the global zoomFactor
+                camera = new THREE.OrthographicCamera(
+                    -frustumSize * aspectRatio / 2,
+                    frustumSize * aspectRatio / 2,
+                    frustumSize / 2,
+                    -frustumSize / 2,
+                    0.1,
+                    1000
+                );
+                // Fixed position for top-down 2D view (looking straight down Y-axis)
+                camera.position.set(0, frustumSize, 0); // High up, looking down
+                camera.lookAt(scene.position); // Look at the center of the shape
+                canvas.style.cursor = 'default'; // Disable dragging cursor
+            }
+            camera.updateProjectionMatrix();
+        }
+
+        /**
+         * The animation loop for rendering the Three.js scene.
+         */
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+
+        /**
+         * Updates voxel visibility and translucency based on the layer visibility slider and "Hollow Shape" toggle.
+         * Layers above the threshold are hidden, the current layer is translucent, and layers below are opaque.
+         */
+        let oldLayer = -9999;
+        //let paintedLayer = -999;
+        function updateVoxelTransparency() {
+            if (!instancedMesh) return; // Exit if no mesh to update
+            //console.log(`================================`);
+            //console.log(`shapeGroup.rotation.x: ${shapeGroup.rotation.x}`);
+            //console.log(`shapeGroup.rotation.y: ${shapeGroup.rotation.y}`);
+
+            const layerVisibilityInput = document.getElementById('layerVisibility');
+            const currentLayerIndicator = document.getElementById('currentLayerIndicator');
+            const layerVisibilityPercentage = parseInt(layerVisibilityInput.value); // 0 to 100
+            const shapeColorInput = document.getElementById('shapeColor');
+            const baseColor = new THREE.Color(shapeColorInput.value); // Get color from input
+
+            const colorArray = instancedMesh.instanceColor.array; // Get the raw color array
+
+            // for(let array of colorArray) {
+            //     //console.log(typeof array)
+            //     console.log(array)
+            // }
+
+            const epsilon = 0.001; // Small buffer for floating point comparisons
+
+            // Determine the Y-coordinate of the "current target layer"
+            let targetLayerY;
+            const uniqueYLevels = [...new Set(allPossibleVoxels.map(p => p.y))].sort((a, b) => a - b); // Sort ascending
+            
+            if (totalLayers > 0) {
+                // Map slider percentage (0-100) to layer index (0 to totalLayers-1)
+                // Slider at 100% (top) -> Layer (totalLayers - 1) (topmost Y in ascending array)
+                // Slider at 0% (bottom) -> Layer 0 (bottommost Y in ascending array)
+                const layerIndex = Math.floor(layerVisibilityPercentage / 100 * (totalLayers - 1));
+                targetLayerY = uniqueYLevels[layerIndex];
+            } else {
+                targetLayerY = minShapeY; // Default if no layers
+            }
+            let height = parseInt(heightInput.value);
+            let isEven = height % 2 == 0;
+            let heightToUse = isEven ? ((height/2)+1) : Math.ceil(height/2);
+            
+            let currentLayer = targetLayerY + heightToUse;
+            if(oldLayer != currentLayer) {
+                oldLayer = currentLayer;
+                if(currentLayer >= height) {
+                    console.log(`We are in top layer!`)
+                }else if(currentLayer <= 1) {
+                    console.log(`We are in bottom layer!`)
+                }
+                //console.log(`Painting layer #${currentLayer} | ${paintedLayer}`)
+            }
+            let rs = [],gs = [], bs = [], as = [];
+            let gridSize = isGridEnabled ? 0.98 : 1;
+            allPossibleVoxels.forEach((pos, i) => {
+                let alpha = 1;
+                let scale = 1;
+                let colorToApply = baseColor; // Default color for all voxels
+
+                // Apply layer visibility logic
+                if (currentViewMode === 'topdown2d') {
+                    //let height = parseInt(heightInput.value);
+                    let isEven = height % 2 == 0;
+                    let heightToUse = isEven ? ((height/2)+1) : Math.ceil(height/2);
+                    //let currentLayer = targetLayerY + heightToUse;
+                    // In 2D view, only the current layer is visible
+                    if (Math.abs(pos.y - targetLayerY) < epsilon) {
+                        colorToApply = highlightColor; // Highlight in 2D view
+                        alpha = 1; // Fully opaque in 2D view for highlight
+                        scale = gridSize;
+                        //paintedLayer = currentLayer;
+                    } else if(pos.y < targetLayerY){
+                        colorToApply = randomColorForBackground2D; // Highlight in 2D view
+                        scale = gridSize; // 1 Hide all other layers
+                        alpha = 0; // Ensure alpha is 0 if scale is 0
+                    } else {
+                        scale = 0; // Hide all other layers
+                        alpha = 0; // Ensure alpha is 0 if scale is 0
+                    }
+                    //console.log(`targetLayerY: ${targetLayerY} | Height input: ${heightInput.value}`)
+                    //console.log(`currentLayer: ${currentLayer} | Height input: ${heightInput.value}`)
+                    if(oldLayer != currentLayer) {
+                        oldLayer = currentLayer;
+                        //console.log(`currentLayer: ${currentLayer} | Height input: ${heightInput.value} => ${heightToUse}`)
+                        //if(currentLayer >= height) {
+                        //    console.log(`We are in top layer!`)
+                        //}else if(currentLayer <= 1) {
+                        //    console.log(`We are in bottom layer!`)
+                        //}
+                    }
+                } else {
+                    // In isometric/perspective view, apply original transparency logic
+                    if (pos.y > targetLayerY + epsilon) {
+                        //colorToApply = new THREE.Color().setHex(0x80dddddd);
+                        // Layers above the target layer: completely invisible (scale to zero)
+                        scale = 0;
+                        alpha = 0.5; // Ensure alpha is 0 for hidden layers
+                    } else if (Math.abs(pos.y - targetLayerY) < epsilon) {
+                        // The current target layer: translucent
+                        colorToApply = randomColorForCurrentLayer3D; // Highlight in 2D view
+                        alpha = 0.5;
+                        scale = gridSize; // 1
+                    }
+                    /*else if(pos.y < targetLayerY){
+                        scale = 1; // Hide all other layers
+                        alpha = 0; // Ensure alpha is 0 if scale is 0
+                    }*/ 
+                    else {
+                        // Layers below the target layer: fully opaque
+                        scale = gridSize;
+                        alpha = 1;
+                    }
+                }
+
+                dummy.position.set(pos.x, pos.y, pos.z);
+                dummy.scale.set(scale, scale, scale); // Apply scaling to hide/show
+                dummy.updateMatrix();
+                instancedMesh.setMatrixAt(i, dummy.matrix);
+
+                // Set per-instance color explicitly
+                /*
+                colorArray[i * 3 + 0] = colorToApply.r;
+                colorArray[i * 3 + 1] = colorToApply.g;
+                colorArray[i * 3 + 2] = colorToApply.b;
+                colorArray[i * 3 + 3] = alpha;
+                rs.push(colorArray[i * 3 + 0])
+                gs.push(colorArray[i * 3 + 1])
+                bs.push(colorArray[i * 3 + 2])
+                as.push(colorArray[i * 3 + 3])
+                */
+                //const color = new THREE.Color().setHex(0x80ffffff);
+                instancedMesh.setColorAt(i,colorToApply)
+                //colorArray[i * 3 + 3] = alpha;
+                if (instancedMesh.instanceColor) {
+                    instancedMesh.instanceColor.array[i * 4 + 3] = alpha;
+                }
+            });
+            //console.log(`instancedMesh.instanceColor.itemSize: ${instancedMesh.instanceColor.itemSize}`)
+            //console.log("Rs",rs)
+            //console.log("Gs",gs)
+            //console.log("Bs",bs)
+            //console.log("As",as)
+            instancedMesh.instanceMatrix.needsUpdate = true;
+            instancedMesh.instanceColor.needsUpdate = true; // Mark color attribute for update
+            instancedMesh.count = allPossibleVoxels.length; // Ensure all instances are considered
+
+            // Calculate and display current layer number
+            if (totalLayers > 0) {
+                // Find the index of targetLayerY in the ascending uniqueYLevels array
+                const uniqueYLevelsAsc = [...new Set(allPossibleVoxels.map(p => p.y))].sort((a, b) => a - b);
+                const targetIndex = uniqueYLevelsAsc.indexOf(targetLayerY);
+                // Convert to 1-indexed layer number from bottom (index + 1)
+                const currentLayerNumber = targetIndex + 1;
+                currentLayerIndicator.textContent = `Current Layer: ${currentLayerNumber} / ${totalLayers}`;
+            } else {
+                currentLayerIndicator.textContent = `Current Layer: 0 / 0`; // For no layers
+            }
+        }
+
+        /**
+         * Initiates the generation of the 3D voxel shape by posting a message to the Web Worker.
+         */
+        function generateShape() {
+            const radiusInputVal = parseFloat(document.getElementById('radiusInput').value);
+            const heightInputVal = parseFloat(document.getElementById('heightInput').value); // Get height value
+            const sizeTypeSwitch = document.getElementById('sizeTypeSwitch');
+            const hollow = document.getElementById('hollow').checked; // Get hollow state
+            const shapeColor = document.getElementById('shapeColor').value; // Get shape color
+
+            currentShapeType = document.querySelector('input[name="shapeType"]:checked').value;
+
+            document.getElementById('loadingIndicator').classList.remove('hidden');
+            document.getElementById('message').textContent = '';
+
+            // Update the shared material color
+            // This line is now primarily for ambient lighting and general material properties,
+            // as per-instance colors will be handled by instanceColor attribute.
+            voxelMaterial.color.set(shapeColor); 
+            voxelMaterial.transparent = true;
+            voxelMaterial.needsUpdate = true;
+            //console.log(`Radius value: ${radiusInputVal}`)
+            // Post message to worker to start voxel calculation
+            worker.postMessage({
+                shapeType: currentShapeType,
+                inputValue: radiusInputVal, // Pass raw input value
+                isDiameterMode: sizeTypeSwitch.checked, // Pass diameter mode state
+                heightValue: heightInputVal, // Pass height value
+                hollow: hollow // Pass hollow state
+            });
+
+            // Update camera view mode immediately
+            updateCameraViewMode(zoomFactor); // Pass zoomFactor here
+        }
+
+
+        /**
+         * Initializes the Three.js scene, camera, renderer, and sets up lighting and mouse controls.
+         */
+        function init() {
+            // 1. Scene Setup
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf0f4f8);
+
+            // 2. Camera Setup (initial setup, will be updated based on view mode)
+            const canvas = document.getElementById('shapeCanvas');
+            const canvasWidth = canvas.clientWidth;
+            const canvasHeight = canvas.clientHeight;
+            const aspectRatio = canvasWidth / canvasHeight; // Define aspectRatio here
+
+            // Initialize with PerspectiveCamera as per user's original working code
+            camera = new THREE.PerspectiveCamera(75, canvasWidth / canvasHeight, 0.1, 1000);
+            camera.position.z = 50; // Initial camera distance from the center of the scene
+            camera.lookAt(scene.position); // Make the camera look at the origin (0,0,0)
+
+            // 3. Renderer Setup
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+            renderer.setSize(canvasWidth, canvasHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.outputEncoding = THREE.sRGBEncoding; // Keep sRGBEncoding for color accuracy
+
+            // 4. Lighting Setup
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(5, 10, 7).normalize();
+            scene.add(directionalLight);
+
+            // 5. Shape Group
+            shapeGroup = new THREE.Group();
+            scene.add(shapeGroup);
+
+            shapeGroup.rotation.x = 0.35;
+            shapeGroup.rotation.y = -0.75;
+
+            // 6. Mouse Controls for Rotating the Shape Group
+            let isDragging = false;
+            let previousMousePosition = { x: 0, y: 0 };
+            const rotationSpeed = 0.01;
+
+            const enableModelMovementCheckbox = document.getElementById('enableModelMovement'); // Get reference
+
+            canvas.addEventListener('mousedown', (e) => {
+                // Only allow dragging if 'Enable Model Movement' is checked and in perspective mode
+                if (enableModelMovementCheckbox.checked && currentViewMode === 'perspective') {
+                    isDragging = true;
+                    previousMousePosition = { x: e.clientX, y: e.clientY };
+                    canvas.style.cursor = 'grabbing';
+                }
+            });
+
+            canvas.addEventListener('mouseup', () => {
+                isDragging = false;
+                if (enableModelMovementCheckbox.checked && currentViewMode === 'perspective') {
+                    canvas.style.cursor = 'grab';
+                }
+            });
+
+            canvas.addEventListener('mousemove', (e) => {
+                // Only allow dragging if 'Enable Model Movement' is checked and in perspective mode
+                if (!isDragging || !enableModelMovementCheckbox.checked || currentViewMode !== 'perspective') return;
+
+                const deltaX = e.clientX - previousMousePosition.x;
+                const deltaY = e.clientY - previousMousePosition.y;
+
+                shapeGroup.rotation.y += deltaX * rotationSpeed;
+                shapeGroup.rotation.x += deltaY * rotationSpeed;
+                shapeGroup.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, shapeGroup.rotation.x));
+
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
+
+            // Set initial cursor based on default movement state and view mode
+            if (enableModelMovementCheckbox.checked && currentViewMode === 'perspective') {
+                canvas.style.cursor = 'grab';
+            } else {
+                canvas.style.cursor = 'default';
+            }
+
+            // 7. Handle Window Resize
+            window.addEventListener('resize', onWindowResize, false);
+
+            // 8. Generate the initial shape on load
+            generateShape();
+
+            // Start the animation loop
+            animate();
+        }
+
+
+        // --- Event Listeners for UI Interactions ---
+        window.onload = function () {
+            // Initialize the Three.js scene and components when the window loads
+            init();
+
+            // Get references to UI elements
+            const radiusInput = document.getElementById('radiusInput');
+            const radiusLabel = document.getElementById('radiusLabel');
+            const heightInput = document.getElementById('heightInput'); // New: height input
+            const incrementHeightButton = document.getElementById('incrementHeight'); // New: height buttons
+            const decrementHeightButton = document.getElementById('decrementHeight'); // New: height buttons
+            const hollowCheckbox = document.getElementById('hollow'); // Renamed from filledShape
+            const generateButton = document.getElementById('generateButton');
+            const shapeTypeRadios = document.querySelectorAll('input[name="shapeType"]');
+            const sizeTypeSwitch = document.getElementById('sizeTypeSwitch');
+            const incrementRadiusButton = document.getElementById('incrementRadius');
+            const decrementRadiusButton = document.getElementById('decrementRadius');
+            const layerVisibilityInput = document.getElementById('layerVisibility');
+            const toggleTopViewButton = document.getElementById('toggleTopViewButton');
+            const currentLayerIndicator = document.getElementById('currentLayerIndicator');
+            const totalLayersFixedDisplay = document.getElementById('totalLayersFixedDisplay');
+            const firstLayerFixedDisplay = document.getElementById('firstLayerFixedDisplay');
+            const enableModelMovementCheckbox = document.getElementById('enableModelMovement'); // Get reference
+            const zoomSlider = document.getElementById('zoomSlider'); // Get reference to zoom slider
+            const shapeColorInput = document.getElementById('shapeColor'); // Get shape color input
+            const toggleGridButton = document.getElementById('toggleGridButton'); // Get reference to grid button
+
+            // Set default input type to Diameter
+            sizeTypeSwitch.checked = true;
+            radiusLabel.textContent = 'Diameter:';
+
+            // Set default state for model movement (disabled)
+            //enableModelMovementCheckbox.checked = true;
+
+            // Update the displayed radius value as the input changes
+            radiusInput.addEventListener('input', () => {
+                // No need to update a separate span, input itself shows the value
+            });
+
+            // Increment/Decrement Radius/Diameter
+            incrementRadiusButton.addEventListener('click', () => {
+                let currentValue = parseFloat(radiusInput.value);
+                let isDiameterMode = sizeTypeSwitch.checked;
+                //console.log(`Incremenet isDiameterMode: ${isDiameterMode}`)
+                if (currentValue < parseFloat(radiusInput.max)) {
+                    radiusInput.value = currentValue +  (isDiameterMode ? 1 : 0.5); // Always increment by 1 for diameter/radius
+                    generateShape();
+                }
+            });
+            decrementRadiusButton.addEventListener('click', () => {
+                let currentValue = parseFloat(radiusInput.value);
+                let isDiameterMode = sizeTypeSwitch.checked;
+                //console.log(`currentValue isDiameterMode: ${isDiameterMode}`)
+                if (currentValue > parseFloat(radiusInput.min)) {
+                    radiusInput.value = currentValue -  (isDiameterMode ? 1 : 0.5); // Always decrement by 1 for diameter/radius
+                    generateShape();
+                }
+            });
+
+            // New: Increment/Decrement Height
+            incrementHeightButton.addEventListener('click', () => {
+                let currentValue = parseFloat(heightInput.value);
+                if (currentValue < parseFloat(heightInput.max)) {
+                    heightInput.value = currentValue + 1;
+                    generateShape();
+                }
+            });
+            decrementHeightButton.addEventListener('click', () => {
+                let currentValue = parseFloat(heightInput.value);
+                if (currentValue > parseFloat(heightInput.min)) {
+                    heightInput.value = currentValue - 1;
+                    generateShape();
+                }
+            });
+            // New: Handle Height input change
+            heightInput.addEventListener('input', generateShape);
+
+            // Handle Shape Color input change
+            shapeColorInput.addEventListener('input', generateShape);
+
+            // Handle Radius/Diameter switch
+            sizeTypeSwitch.addEventListener('change', () => {
+                const currentInputValue = parseFloat(radiusInput.value);
+                if (sizeTypeSwitch.checked) { // Switched TO Diameter mode
+                    radiusLabel.textContent = 'Diameter:';
+                    // If previous mode was Radius, convert currentRadius to Diameter
+                    // Diameter = 2 * Radius + 1 (for integer block count)
+                    radiusInput.value = currentInputValue * 2; 
+                } else { // Switched TO Radius mode
+                    radiusLabel.textContent = 'Radius:';
+                    // If previous mode was Diameter, convert currentDiameter to Radius
+                    // Radius = floor(currentInputValue / 2)
+                    radiusInput.value = currentInputValue / 2;
+                }
+                generateShape(); // Regenerate shape when size type changes
+            });
+
+            // Update layer visibility
+            layerVisibilityInput.addEventListener('input', updateVoxelTransparency);
+
+            // Handle "Hollow" checkbox change (triggers full shape regeneration as it affects voxel positions)
+            hollowCheckbox.addEventListener('change', generateShape);
+
+            // Handle Model Movement checkbox change (updates cursor)
+            enableModelMovementCheckbox.addEventListener('change', () => {
+                const canvas = document.getElementById('shapeCanvas');
+                if (enableModelMovementCheckbox.checked && currentViewMode === 'perspective') { // Only allow dragging in perspective
+                    canvas.style.cursor = 'grab';
+                } else {
+                    canvas.style.cursor = 'default';
+                }
+            });
+
+            // Handle Zoom Slider change
+            zoomSlider.addEventListener('input', () => {
+                zoomFactor = parseFloat(zoomSlider.value); // Update global zoomFactor
+                updateCameraViewMode(zoomFactor); // Recalculate camera view with new zoom
+            });
+            let upperRotation = [0,0];
+            let savedRotation = [0,0];
+            // Toggle Top-Down 2D View
+            toggleTopViewButton.addEventListener('click', () => {
+                if (currentViewMode === 'topdown2d') {
+                    // If currently in 2D top-down, revert to previous view mode
+                    currentViewMode = previousViewMode;
+                    toggleTopViewButton.textContent = 'View Top Layer (2D)';
+                    // Update cursor based on movement toggle
+                    const canvas = document.getElementById('shapeCanvas');
+                    const enableModelMovementCheckbox = document.getElementById('enableModelMovement');
+                    if (enableModelMovementCheckbox.checked && currentViewMode === 'perspective') {
+                        canvas.style.cursor = 'grab';
+                    } else {
+                        canvas.style.cursor = 'default';
+                    }
+                    shapeGroup.rotation.x = savedRotation[0];
+                    shapeGroup.rotation.y = savedRotation[1];
+                } else {
+                    // If not in 2D top-down, switch to it
+                    previousViewMode = currentViewMode; // Store current view mode
+                    currentViewMode = 'topdown2d';
+                    toggleTopViewButton.textContent = 'Exit 2D Top View';
+                    // No dragging in 2D top-down view
+                    document.getElementById('shapeCanvas').style.cursor = 'default';
+                    savedRotation[0] = shapeGroup.rotation.x;
+                    savedRotation[1] = shapeGroup.rotation.y;
+                    shapeGroup.rotation.x = upperRotation[0];
+                    shapeGroup.rotation.y = upperRotation[1];
+                    //console.log(`X: ${shapeGroup.rotation.x}`)
+                    //console.log(`Y: ${shapeGroup.rotation.y}`)
+                }
+                updateCameraViewMode(zoomFactor); // Update camera for new view mode, passing global zoomFactor
+                updateVoxelTransparency(); // Re-apply transparency/color logic for new view mode
+            });
+
+            toggleGridButton.addEventListener('click', () => {
+                isGridEnabled = !isGridEnabled; // Toggle the state
+                if (isGridEnabled) {
+                    toggleGridButton.classList.remove('bg-gray-200', 'hover:bg-gray-300', 'text-gray-800');
+                    toggleGridButton.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white');
+                } else {
+                    toggleGridButton.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white');
+                    toggleGridButton.classList.add('bg-gray-200', 'hover:bg-gray-300', 'text-gray-800');
+                }
+                updateVoxelTransparency(); // Re-render voxels with new grid setting
+            });
+
+            // Trigger shape generation when the "Generate Shape" button is clicked
+            generateButton.addEventListener('click', generateShape);
+
+            // Trigger shape generation when shape type changes
+            shapeTypeRadios.forEach(radio => {
+                radio.addEventListener('change', generateShape);
+            });
+            setTimeout(()=>{
+                zoomFactor = parseFloat(zoomSlider.value); // Update global zoomFactor
+                updateCameraViewMode(zoomFactor); // Recalculate camera view with new zoom
+            },50);
+        };
+        window.addEventListener('message', async function(event) {
+            // if (event.origin !== 'https://alonsoaliaga.github.io') return;
+            //console.log("Mensaje recibido!");
+            //console.log(event);
+            //console.log(event.data);
+            if(typeof event.data != "undefined") {
+                //console.log(event.data);
+                if (event.data && event.data.type === 'unlockFeature') {
+                //console.log('Received unlock message from ads page.');
+                    window.addEventListener('focus',  () => {
+                        checkUnlockStatus();
+                    },{once:true});
+                    return;
+                }
+            }
+        });
+        checkUnlockStatus()
+        async function checkUnlockStatus() {
+            console.warn("Checking status");
+            const unlockStatusElement = document.getElementById('unlock-features-div');
+            // setInterval(()=>{
+            //   unlockStatusElement.click();
+            // },10);
+            const openAdsButton = document.getElementById('openAdsButton');
+
+            try {
+                const storedUnlockData = localStorage.getItem(`appUnlockBlockShapesDataFeature-${btoa("all")}`);
+                if (!storedUnlockData) {
+                    localStorage.removeItem(`appUnlockBlockShapesDataFeature-${btoa("all")}`);
+                    console.warn("No stored data");
+                    return;
+                }
+                //let { unlockedUntil, signature } = JSON.parse(storedUnlockData);
+                let json = {};
+                try{
+                  json = JSON.parse(storedUnlockData);
+                }catch(e) {
+
+                }
+                let { unlockedUntil, signature } = json;
+
+                // Ensure data types are correct
+                if (typeof unlockedUntil !== 'number' || typeof signature !== 'string') {
+                    localStorage.removeItem(`appUnlockBlockShapesDataFeature-${btoa("all")}`); // Clear invalid data
+                    console.warn("Invalid stored data");
+                    return;
+                }
+                let SECRET_SALT = "YourSuperSecretSaltForUnlockFeature123!@#FeatureBlockShapes";
+                // Recalculate the expected signature to check for tampering
+                const expectedSignature = await generateSha256Hash(unlockedUntil + SECRET_SALT);
+
+                // Check if the signature matches AND if the timestamp is still valid
+                const currentTime = Date.now();
+
+                if (signature === expectedSignature && currentTime < unlockedUntil) {
+                    const remainingTimeMs = unlockedUntil - currentTime;
+                    const remainingHours = Math.floor(remainingTimeMs / (1000 * 60 * 60));
+                    const remainingMinutes = Math.floor((remainingTimeMs % (1000 * 60 * 60)) / (1000 * 60));
+                    unlockStatusElement.innerText = `UNLOCKED FEATURES! 🚀\r\nExpires in ${remainingHours}h ${remainingMinutes}m`;
+                    unlockStatusElement.style.backgroundColor = "rgb(128 255 103)"
+                    unlockStatusElement.style.fontWeight = "bold"
+                    unlockStatusElement.disabled = true;
+                    let times = 0;
+                    async function timeF(event) {
+                      event.preventDefault();
+                      if(event.type == "contextmenu" && event.ctrlKey) {
+                        times += 50;
+                      }else times++;
+                      let emojis = getClosestValue(confetties,times);
+                      customParty(emojis.split(" "),emojis == final ? 10 : 0);
+                      if(confetties.has(times)) {
+                        party();
+                      }
+                      if(emojis == final) {
+                        function nothing(event) {
+                          event.preventDefault();
+                        }
+                        unlockStatusElement.onclick = nothing;
+                        unlockStatusElement.oncontextmenu = nothing;
+                      }
+                    }
+                    document.getElementById("model-movement-div").style.display = "inline";
+                    unlockStatusElement.onclick = timeF;
+                    unlockStatusElement.oncontextmenu = timeF;
+                    console.warn("Already unlocked!");
+                    confettiTime()
+                } else {
+                    // Either signature mismatch (tampered) or unlock period expired
+                    if (signature !== expectedSignature) {
+                        console.warn("Unlock data tampered with! Signature mismatch.");
+                        // For a real application, you might want to log this to a server
+                        // to detect and analyze tampering attempts.
+                    }
+                    localStorage.removeItem(`appUnlockBlockShapesDataFeature-${btoa("all")}`); // Clear invalid or expired data
+                    unlockStatusElement.textContent = '  Unlock features 🧪';
+                    console.warn("Suspicious data, not unlocked.");
+                }
+            } catch (error) {
+                console.error("Error checking unlock status:", error);
+                localStorage.removeItem(`appUnlockBlockShapesDataFeature-${btoa("all")}`); // Clear potentially corrupted data
+                unlockStatusElement.textContent = '  Unlock features 🧪';
+            }
+            let final = "👽"
+            let confetties = new Map();
+            confetties.set(0,"🔴 🟠 🟡 🟢 🔵 🟣 ⚫ ⚪ 🟤")
+            confetties.set(5,"⭐ ✨")
+            confetties.set(30,"🍏 🧪")
+            confetties.set(50,"😯 😜 😝")
+            confetties.set(100,"🍨 🍩 🍪")
+            confetties.set(150,"🚗 🚓 🚕 🛺")
+            confetties.set(200,"💂🏻 👮🏻 🕵🏻 👨🏻 👷🏻 🧑🏻‍⚕️ 🧑🏻‍🎓")
+            confetties.set(250,"💔 ❤️‍🔥 ❤️‍🩹 ❣️ 💕 💞")
+            confetties.set(300,"🤞🏻 👈🏻 👉🏻 🤙🏻 👐🏻")
+            confetties.set(400,"🎁 🎄 🎊")
+            confetties.set(500,"🎃🪦⚰️💀👻")
+            confetties.set(750,"🦄🐲")
+            confetties.set(1000,final)
+            function getClosestValue(map, num) {
+              const keys = [...map.keys()].filter(k => k <= num);
+              if (keys.length === 0) return undefined;
+              const closest = Math.max(...keys);
+              return map.get(closest);
+            }
+            function customParty(emojis = [], time = 0) {
+              const defaults = {
+                spread: 360,
+                ticks: 100,
+                gravity: 0,
+                decay: 0.94,
+                startVelocity: 30,
+              };
+              function shoot(particleCount = 10) {
+                confetti({
+                  ...defaults,
+                  particleCount: particleCount,
+                  scalar: 2,
+                  shapes: ["emoji"],
+                  shapeOptions: {
+                    emoji: {
+                      value: emojis,
+                    },
+                  },
+                });
+              }
+              if(time != 0) {
+                const duration = time * 1 * 1000,
+                  animationEnd = Date.now() + duration;
+                const interval = setInterval(function () {
+                	const timeLeft = animationEnd - Date.now();
+                	if (timeLeft <= 0) {
+                		return clearInterval(interval);
+                	}
+                	const particleCount = 25 * (timeLeft / duration);
+                  shoot(particleCount);
+                },250);
+              }
+              shoot();
+            }
+            function party(){
+              const a=new AudioContext(),o=a.createOscillator(),g=a.createGain();
+              o.type='square';
+              o.frequency.setValueAtTime(500,a.currentTime);
+              g.gain.setValueAtTime(1,a.currentTime);
+              g.gain.exponentialRampToValueAtTime(0.001,a.currentTime+0.3);
+              o.connect(g).connect(a.destination);
+              o.start();o.stop(a.currentTime+0.3);
+            }
+            function clap(){
+              const a=new AudioContext(),b=a.createBuffer(1,a.sampleRate*0.3,a.sampleRate),
+                    d=b.getChannelData(0);
+              for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2);
+              const s=a.createBufferSource();s.buffer=b;
+              const f=a.createBiquadFilter();f.type='bandpass';f.frequency.value=1000;
+              const g=a.createGain();g.gain.setValueAtTime(1,a.currentTime);
+              g.gain.exponentialRampToValueAtTime(0.01,a.currentTime+0.3);
+              s.connect(f).connect(g).connect(a.destination);s.start();
+            }
+            function confettiTime(type = 0) {
+              if(type == 0) party();
+              else clap();
+              let soundTimes = 0;
+              const duration = 3 * 1 * 1000,
+                animationEnd = Date.now() + duration,
+                defaults = { startVelocity: 30, spread: 360, ticks: 20, zIndex: 0 };
+
+              function randomInRange(min, max) {
+              	return Math.random() * (max - min) + min;
+              }
+              const interval = setInterval(function () {
+              	const timeLeft = animationEnd - Date.now();
+            
+              	if (timeLeft <= 0) {
+              		return clearInterval(interval);
+              	}
+                if(type == 0) {
+                  soundTimes++;
+                  if(soundTimes < 10) clap();
+                }
+            
+              	const particleCount = 25 * (timeLeft / duration);
+            
+              	// since particles fall down, start a bit higher than random
+              	confetti(
+              		Object.assign({}, defaults, {
+              			particleCount,
+              			origin: { x: randomInRange(0.1, 0.5), y: Math.random() - 0.2 }
+              		})
+              	);
+              	confetti(
+              		Object.assign({}, defaults, {
+              			particleCount,
+              			origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+              		})
+              	);
+              }, 250);
+            }
+        }
+        async function generateSha256Hash(message) {
+            const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8); // hash the message
+            const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // convert bytes to hex string
+            return hashHex;
+        }
+/*
+        setTimeout(()=>{
+            let newScript = document.createElement("script");
+            newScript.setAttribute('src', "resources.js");
+            newScript.setAttribute('type', 'text/javascript');
+            newScript.setAttribute('async', 'true');
+            newScript.onload = () => console.log(`resources.js loaded successfully.`);
+            newScript.onerror = () => console.error(`Error loading script: resources.js`);
+            document.body.appendChild(newScript)
+            window.startChecking();
+        },1000);
+*/
+        </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5185973148525065"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <!-- <script src="resources.js"></script> -->
+    <script async src="resources.js"></script>
+    <script src="script.js"></script>
+    </div>
+        <p style="font-size: 15px;"></p>
+      <div style="justify-content: center;display: flex;">
+        <div class="center-container">
+          <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
+            <legend style="text-align: center;width: 70%;padding: 0px 15px 5px 15px;font-family: MinecraftBold;" id="thelegend">Looking for a pixelart like this? 💎</legend> 
+            <img src="https://raw.githubusercontent.com/AlonsoAliaga/block-shapes/main/assets/showcase/pixelart-showcase.png" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mcpfp', '_blank');">
+          </fieldset>
+        </div>&nbsp;&nbsp;
+        <div class="center-container">
+          <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
+            <legend style="text-align: center;width: 70%;padding: 0px 15px 5px 15px;font-family: MinecraftBold;" id="thelegend">Looking for a render like this one? 💎</legend> 
+            <img src="https://raw.githubusercontent.com/AlonsoAliaga/block-shapes/main/assets/showcase/render-showcase.png" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mc-renders', '_blank');">
+          </fieldset>
+        </div>&nbsp;&nbsp;
+        <div class="center-container">
+          <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
+            <legend style="text-align: center;width: 80%;padding: 0px 15px 5px 15px;font-family: MinecraftBold;" id="thelegend">Looking for an animation like this one? 💎</legend> 
+            <img src="https://raw.githubusercontent.com/AlonsoAliaga/block-shapes/main/assets/showcase/skin-showcase.gif" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mc-skin', '_blank');">
+          </fieldset>
+        </div>
+      </div>
+    <p style="font-size: 10px;"></p>
+    <div class="options" style="padding: 2px 35px;">
+        <div style="border-radius: 25px;font-size: 18px ;padding-top: 20px;padding-bottom: 20px; font-family: MinecraftRegular;" class="examples">
+          <h2 style="font-size: 18px; font-family: MinecraftBold;">More tools for you:</h2>
+          <div style="text-align: left;font-size: 20px;" id="tools-for-you">
+          </div>
+          <br>
+          <h2 style="color: transparent;font-size: 18px ;text-align: center; font-family: MinecraftBold;"><a href="https://alonsoaliaga.github.io" rel="noopener" target="_blank">AlonsoAliaga Development</a></h2>
+        </div>
+    </div>
+    </div>
+    <div>
+        <br>
+        <h2 style="font-size: 15px ;text-align: center;">❤️ Thanks to <a href="https://alonsoaliaga.com/donate" rel="noopener" target="_blank">AlonsoAliaga</a> for his hard work during the development of this tool.</h2>
+        <br>
+        <!-- <div id="mybutton">
+          <button class="buttonface"><a href="https://alonsoaliaga.github.io"><img src="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png"></a></button>
+        </div> -->
+        <div id="mybutton" style="z-index: 99999;">
+          <div style="position: center;display: inline-block;">
+            <button class="buttonface"><a href="https://alonsoaliaga.github.io"><img src="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png"></a></button>
+            <br>
+            <div id="visitor-counter" style="text-align: center;">
+              <span id="counter-amount" style="font-family: MinecraftBold;font-weight: bold;">Visits: 0</span>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>
