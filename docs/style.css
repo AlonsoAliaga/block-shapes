@@ -171,7 +171,7 @@ body {
     align-items: center; /* items-center */
     /*justify-content: center; /* justify-center */
     min-height: 100vh; /* min-h-screen */
-    padding: 1rem; /* p-4 */
+    
 }
 body.dark {
   background-color:#1c1c1cd9;
